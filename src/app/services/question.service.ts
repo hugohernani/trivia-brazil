@@ -3,8 +3,8 @@ import { Headers, Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import '../rxjs-extensions';
 
-import { Question, Category } from '../model/question';
-import { CategoryService } from './category.service';
+import { Question, Category }     from '../model';
+import {CategoryService} from './category.service';
 
 @Injectable()
 export class QuestionService {
@@ -16,6 +16,7 @@ export class QuestionService {
 
   getQuestions(): Observable<Question[]> {
     let url = this._serviceUrl;
+
     return Observable.forkJoin(
       this.http.get(url).map<any, Question[]>(res => res.json()),
       this.categoryService.getCategories())
@@ -24,11 +25,10 @@ export class QuestionService {
         let categories: Category[] = combined[1];
         questions.forEach(q => {
           q.categories = [];
-          q.categoryIds.forEach(id => q.categories.push(
-            categories.find(element => element.id == id)))
+          q.categoryIds.forEach(id => q.categories.push(categories.find(element => element.id == id)))
         })
         return questions;
       })
-    )
   }
+
 }
