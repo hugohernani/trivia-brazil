@@ -15,13 +15,13 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { routes }   from './app.route';
 import { AppComponent, CategoriesComponent, TagsComponent,
-  QuestionsComponent, QuestionAddUpdateComponent } from './components';
-import { CategoryService, TagService, QuestionService } from './services';
+  QuestionsComponent, QuestionAddUpdateComponent, LoginComponent } from './components';
+import { CategoryService, TagService, QuestionService, AuthenticationService } from './services';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import {CategoryActions, QuestionActions, TagActions} from './store/actions';
+import {CategoryActions, QuestionActions, TagActions, UserActions} from './store/actions';
 import {CategoryEffects, QuestionEffects, TagEffects} from './store/effects';
 import { default as reducer } from './store/app-store';
 
@@ -36,11 +36,14 @@ export const firebaseConfig = {
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent, LoginComponent,
     CategoriesComponent,
     TagsComponent,
     QuestionsComponent,
     QuestionAddUpdateComponent
+  ],
+  entryComponents: [
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +74,8 @@ export const firebaseConfig = {
   ],
   providers: [
     CategoryService, TagService, QuestionService,
-    CategoryActions, QuestionActions, TagActions
+    CategoryActions, QuestionActions, TagActions, UserActions,
+    AuthenticationService
   ],
   bootstrap: [AppComponent]
 })
