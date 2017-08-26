@@ -1,79 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule  } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
-import { AngularFireModule } from 'angularfire2';
-
-import 'hammerjs';
 
 import { routes }   from './app.route';
-import { AppComponent, CategoriesComponent, TagsComponent,
-  QuestionAddUpdateComponent, LoginComponent,
-  PasswordAuthComponent, AdminComponent, AdminQuestionsComponent,
-  DashboardComponent, MyQuestionsComponent } from './components';
-import { CategoryService, TagService, QuestionService,
-  AuthenticationService, AuthGuard } from './services';
 
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from  './shared/shared.module';
 
-// custom modules
-import { SharedModule } from './shared/shared.module';
-
-import {CategoryActions, QuestionActions, TagActions,
-  UserActions, UIStateActions} from './store/actions';
-import {CategoryEffects, QuestionEffects, TagEffects, UserEffects} from './store/effects';
-import { default as reducer } from './store/app-store';
-
-import { firebaseConfig } from '../environments/environment';
+import { AppComponent, DashboardComponent,
+         AdminComponent,
+         CategoriesComponent, TagsComponent,
+         QuestionAddUpdateComponent, MyQuestionsComponent, AdminQuestionsComponent } from './components';
 
 @NgModule({
   declarations: [
-    AppComponent, LoginComponent,
-    CategoriesComponent,
-    TagsComponent,
-    QuestionAddUpdateComponent,
-    PasswordAuthComponent,
+    AppComponent, DashboardComponent,
     AdminComponent,
-    AdminQuestionsComponent,
-    DashboardComponent,
-    MyQuestionsComponent
-  ],
-  entryComponents: [
-    LoginComponent, PasswordAuthComponent
+    CategoriesComponent, TagsComponent,
+    QuestionAddUpdateComponent, MyQuestionsComponent, AdminQuestionsComponent
   ],
   imports: [
     BrowserModule,
+
     // Router
     RouterModule.forRoot(routes),
-    FormsModule,
-    HttpModule,
-    StoreDevtoolsModule.instrumentOnlyWithExtension({
-      maxAge: 20
-    }),
-
-    AngularFireModule.initializeApp(firebaseConfig),
-
-    //store
-    StoreModule.provideStore(reducer),
-
-    //ngrx effects
-    EffectsModule.run(UserEffects),
-    EffectsModule.run(CategoryEffects),
-    EffectsModule.run(QuestionEffects),
-    EffectsModule.run(TagEffects),
 
     //custom modules
+    CoreModule,
     SharedModule
   ],
   providers: [
-    CategoryService, TagService, QuestionService,
-    CategoryActions, QuestionActions, TagActions, UserActions,
-    UIStateActions, AuthenticationService, AuthGuard
   ],
   bootstrap: [AppComponent]
 })

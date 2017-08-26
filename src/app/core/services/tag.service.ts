@@ -2,7 +2,7 @@ import { Injectable }    from '@angular/core';
 import { Headers } from '@angular/http';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Observable } from 'rxjs/Observable';
-import '../rxjs-extensions';
+import '../../rxjs-extensions';
 
 @Injectable()
 export class TagService {
