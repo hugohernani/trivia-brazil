@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { RouterModule  } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -29,14 +28,7 @@ import {CategoryActions, QuestionActions, TagActions,
 import {CategoryEffects, QuestionEffects, TagEffects, UserEffects} from './store/effects';
 import { default as reducer } from './store/app-store';
 
-export const firebaseConfig = {
-  apiKey: 'AIzaSyCe_ZGkZaPpuBbodB6_39ovZwaXOOVhUHo',
-  authDomain: 'rwa-trivia-brazil.firebaseapp.com',
-  databaseURL: 'https://rwa-trivia-brazil.firebaseio.com',
-  projectId: 'rwa-trivia-brazil',
-  storageBucket: 'rwa-trivia-brazil.appspot.com',
-  messagingSenderId: '762046923934'
-}
+import { firebaseConfig } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -56,7 +48,6 @@ export const firebaseConfig = {
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
     // Router
     RouterModule.forRoot(routes),
     FormsModule,

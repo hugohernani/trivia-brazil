@@ -6,3 +6,12 @@
 export const environment = {
   production: false
 };
+
+export const firebaseConfig = {
+  apiKey: 'AIzaSyCe_ZGkZaPpuBbodB6_39ovZwaXOOVhUHo',
+  authDomain: 'rwa-trivia-brazil.firebaseapp.com',
+  databaseURL: 'https://rwa-trivia-brazil.firebaseio.com',
+  projectId: 'rwa-trivia-brazil',
+  storageBucket: 'rwa-trivia-brazil.appspot.com',
+  messagingSenderId: '762046923934'
+}
