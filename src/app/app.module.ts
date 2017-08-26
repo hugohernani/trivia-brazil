@@ -26,7 +26,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import {CategoryActions, QuestionActions, TagActions,
   UserActions, UIStateActions} from './store/actions';
-import {CategoryEffects, QuestionEffects, TagEffects} from './store/effects';
+import {CategoryEffects, QuestionEffects, TagEffects, UserEffects} from './store/effects';
 import { default as reducer } from './store/app-store';
 
 export const firebaseConfig = {

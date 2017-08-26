@@ -2,8 +2,8 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
-import { AppStore } from '../../store/app-store';
-import { Question, Category }     from '../../model';
+import { AppStore } from '../../../store/app-store';
+import { Question, Category } from '../../../model';
 
 @Component({
   selector: 'my-questions',

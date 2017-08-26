@@ -1,27 +1,34 @@
-import { Category, Question, User } from '../model';
+import { User, Category, Question } from '../model';
 
-import { categories, categoryDictionary, questions,
-  tags, questionSaveStatus, user, loginRedirectUrl } from './reducers';
+import { user, categories, categoryDictionary, tags,
+         questions, unpublishedQuestions, sampleQuestions, questionSaveStatus, userQuestions,
+         loginRedirectUrl } from './reducers';
 
 import { combineReducers } from '@ngrx/store';
 import { compose } from '@ngrx/core/compose';
 
 export interface AppStore {
+  user: User;
   categories: Category[];
   categoryDictionary: {[key: number]: Category};
-  questions: Question[];
   tags: string[];
+  questions: Question[];
+  unpublishedQuestions: Question[];
+  userQuestions: Question[];
+  sampleQuestions: Question[];
   questionSaveStatus: string;
-  user: User;
   loginRedirectUrl: string;
 }
 
 export default compose(combineReducers)({
-    categories: categories,
-    categoryDictionary: categoryDictionary,
-    questions: questions,
-    tags: tags,
-    questionSaveStatus: questionSaveStatus,
-    user: user,
-    loginRedirectUrl: loginRedirectUrl
+  user: user,
+  categories: categories,
+  categoryDictionary: categoryDictionary,
+  tags: tags,
+  questions: questions,
+  unpublishedQuestions: unpublishedQuestions,
+  userQuestions: userQuestions,
+  sampleQuestions: sampleQuestions,
+  questionSaveStatus: questionSaveStatus,
+  loginRedirectUrl: loginRedirectUrl
 });
