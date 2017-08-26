@@ -5,6 +5,8 @@ import { RouterModule  } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 import 'hammerjs';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -37,6 +39,9 @@ import { default as reducer } from './store/app-store';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    StoreDevtoolsModule.instrumentOnlyWithExtension({
+      maxAge: 20
+    }),
 
     //Material
     MaterialModule,
