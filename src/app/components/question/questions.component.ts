@@ -10,21 +10,28 @@ import { Question } from '../../model';
   templateUrl: './questions.component.html',
   styleUrls: ['./questions.component.scss']
 })
-export class QuestionsComponent implements OnInit {
+export class QuestionsComponent implements OnInit, OnDestroy {
   questionObs: Observable<Question[]>;
   questions: Question[];
+  categoryDictObs: Observable<{[key: number]: Category}>;
+  categoryDictionary: {[key: number]: Category};
   sub: any;
+  sub2: any;
 
   constructor(private store: Store<AppStore>) {
     this.questionObs = store.select((s) => s.questions);
+    this.categoryDictObs = store.select((s) => s.categoryDictionary);
   }
 
   ngOnInit() {
     this.sub = this.questionObs.subscribe(questions => this.questions = questions);
+    this.sub2 = this.categoryDictObs.subscribe(cd => this.categoryDictionary = cd);
   }
 
   ngOnDestroy() {
-    if (this.sub)
+    if(this.sub)
       this.sub.unsubscribe();
+    if(this.sub2)
+      this.sub2.unsubscribe();
   }
 }
