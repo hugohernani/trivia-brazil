@@ -17,7 +17,7 @@ export const categories = (state: any = [], action: Action): Category[] => {
 export const categoryDictionary = (state: any = {}, action: Action): {[key: number]: Category} => {
   switch(action.type) {
     case CategoryActions.LOAD_CATEGORIES_SUCCESS:
-      let categories: Category[] = payload.categories;
+      let categories: Category[] = action.payload;
       let categoryDict: {[key: number]: Category} = {};
       categories.forEach(category => {
         categoryDict[category.id] = category;

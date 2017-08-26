@@ -7,6 +7,8 @@ import { HttpModule } from '@angular/http';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { AngularFireModule } from 'angularfire2';
+
 import 'hammerjs';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -22,6 +24,15 @@ import { EffectsModule } from '@ngrx/effects';
 import {CategoryActions, QuestionActions, TagActions} from './store/actions';
 import {CategoryEffects, QuestionEffects, TagEffects} from './store/effects';
 import { default as reducer } from './store/app-store';
+
+export const firebaseConfig = {
+  apiKey: 'AIzaSyCe_ZGkZaPpuBbodB6_39ovZwaXOOVhUHo',
+  authDomain: 'rwa-trivia-brazil.firebaseapp.com',
+  databaseURL: 'https://rwa-trivia-brazil.firebaseio.com',
+  projectId: 'rwa-trivia-brazil',
+  storageBucket: 'rwa-trivia-brazil.appspot.com',
+  messagingSenderId: '762046923934'
+}
 
 @NgModule({
   declarations: [
@@ -47,6 +58,8 @@ import { default as reducer } from './store/app-store';
     MaterialModule,
     //Flex
     FlexLayoutModule,
+
+    AngularFireModule.initializeApp(firebaseConfig),
 
     //store
     StoreModule.provideStore(reducer),

@@ -22,8 +22,8 @@ export class QuestionEffects {
 
   @Effect()
   addQuestion$ = this.actions$
-    .ofType(QuestionActions.ADD_QUESTION)
-    .switchMap((action) => this.svc.saveQuestion(action.payload))
-    .map((question: Question) => this.questionActions.addQuestionSuccess(question));
+      .ofType(QuestionActions.ADD_QUESTION)
+      .do((action) => this.svc.saveQuestion(action.payload))
+      .filter(() => false);
 
 }
