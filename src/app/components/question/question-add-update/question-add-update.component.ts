@@ -2,15 +2,21 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup,
   Validators, FormArray, FormControl, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
+import { AppStore } from '../../../store/app-store';
 import { Category, Question, Answer } from '../../../model';
-import { CategoryService, TagService, QuestionService } from '../../../services';
+import { QuestionService } from '../../../services';
 
 @Component({
   templateUrl: './question-add-update.component.html',
   styleUrls: ['./question-add-update.component.scss']
 })
 export class QuestionAddUpdateComponent implements OnInit, OnDestroy {
+
+  tagsObs: Observable<string[]>;
+  categoriesObs: Observable<Category[]>;
 
   //Properties
   categories: Category[];
@@ -35,9 +41,10 @@ export class QuestionAddUpdateComponent implements OnInit, OnDestroy {
   //Constructor
   constructor(private fb: FormBuilder,
               private router: Router,
-              private categoryService: CategoryService,
-              private tagService: TagService,
+              private store: Store<AppStore>,
               private questionService: QuestionService) {
+    this.categoriesObs = this.store.select((s) => s.categories);
+    this.tagsObs = this.store.select((s) => s.tags);
   }
 
   //Lifecycle hooks
@@ -50,11 +57,9 @@ export class QuestionAddUpdateComponent implements OnInit, OnDestroy {
     questionControl.valueChanges.debounceTime(500).subscribe(v => this.computeAutoTags());
     this.answers.valueChanges.debounceTime(500).subscribe(v => this.computeAutoTags());
 
-    this.sub = this.categoryService.getCategories()
-                   .subscribe(categories => this.categories = categories);
+    this.sub = this.categoriesObs.subscribe(categories => this.categories = categories);
 
-    this.sub2 = this.tagService.getTags()
-                   .subscribe(tags => this.tags = tags);
+    this.sub2 = this.tagsObs.subscribe(tags => this.tags = tags);
   }
 
   ngOnDestroy() {
