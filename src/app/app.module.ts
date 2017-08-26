@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule  } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -9,12 +9,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AngularFireModule } from 'angularfire2';
 
 import 'hammerjs';
-import { MaterialModule } from '@angular/material';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { routes }   from './app.route';
 import { AppComponent, CategoriesComponent, TagsComponent,
-  QuestionsComponent, QuestionAddUpdateComponent, LoginComponent,
+  QuestionAddUpdateComponent, LoginComponent,
   PasswordAuthComponent, AdminComponent, AdminQuestionsComponent,
   DashboardComponent, MyQuestionsComponent } from './components';
 import { CategoryService, TagService, QuestionService,
@@ -22,6 +20,9 @@ import { CategoryService, TagService, QuestionService,
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+
+// custom modules
+import { SharedModule } from './shared/shared.module';
 
 import {CategoryActions, QuestionActions, TagActions,
   UserActions, UIStateActions} from './store/actions';
@@ -35,7 +36,6 @@ import { firebaseConfig } from '../environments/environment';
     AppComponent, LoginComponent,
     CategoriesComponent,
     TagsComponent,
-    QuestionsComponent,
     QuestionAddUpdateComponent,
     PasswordAuthComponent,
     AdminComponent,
@@ -51,16 +51,10 @@ import { firebaseConfig } from '../environments/environment';
     // Router
     RouterModule.forRoot(routes),
     FormsModule,
-    ReactiveFormsModule,
     HttpModule,
     StoreDevtoolsModule.instrumentOnlyWithExtension({
       maxAge: 20
     }),
-
-    //Material
-    MaterialModule,
-    //Flex
-    FlexLayoutModule,
 
     AngularFireModule.initializeApp(firebaseConfig),
 
@@ -71,7 +65,10 @@ import { firebaseConfig } from '../environments/environment';
     EffectsModule.run(UserEffects),
     EffectsModule.run(CategoryEffects),
     EffectsModule.run(QuestionEffects),
-    EffectsModule.run(TagEffects)
+    EffectsModule.run(TagEffects),
+
+    //custom modules
+    SharedModule
   ],
   providers: [
     CategoryService, TagService, QuestionService,
