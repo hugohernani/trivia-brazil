@@ -3,8 +3,8 @@ import { AbstractControl, FormBuilder, FormGroup,
   Validators, FormArray, FormControl, ValidatorFn } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { Category, Question, Answer }     from '../../model';
-import { CategoryService, TagService, QuestionService } from '../../services';
+import { Category, Question, Answer } from '../../../model';
+import { CategoryService, TagService, QuestionService } from '../../../services';
 
 @Component({
   templateUrl: './question-add-update.component.html',
