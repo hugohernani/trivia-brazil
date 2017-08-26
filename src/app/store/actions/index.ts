@@ -1,9 +1,12 @@
 import {CategoryActions} from './category.actions';
+import { QuestionActions } from './question.actions';
 
 export {
-  CategoryActions
+  CategoryActions,
+  QuestionActions
 };
 
 export default [
-  CategoryActions
+  CategoryActions,
+  QuestionActions
 ];
