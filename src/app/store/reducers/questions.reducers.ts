@@ -15,3 +15,14 @@ export const questions = (state: any = [], action: Action): Question[] => {
       return state;
   }
 };
+
+export const questionSaveStatus = (state: any = 'NONE', action: Action): string => {
+  switch(action.type) {
+    case QuestionActions.ADD_QUESTION:
+      return "IN PROGRESS";
+    case QuestionActions.ADD_QUESTION_SUCCESS:
+      return "SUCCESS";
+    default:
+      return state;
+  }
+};
