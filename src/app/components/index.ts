@@ -4,6 +4,7 @@ import { QuestionsComponent } from './question/questions.component';
 import { QuestionAddUpdateComponent } from './question/question-add-update/question-add-update.component';
 import { TagsComponent } from './tag/tags.component';
 import { LoginComponent } from './login/login.component';
+import { PasswordAuthComponent } from './password-auth/password-auth.component';
 
 export {
     AppComponent,
@@ -11,7 +12,8 @@ export {
     QuestionsComponent,
     QuestionAddUpdateComponent,
     TagsComponent,
-    LoginComponent
+    LoginComponent,
+    PasswordAuthComponent
 };
 
 export default [
@@ -20,5 +22,6 @@ export default [
     QuestionsComponent,
     QuestionAddUpdateComponent,
     TagsComponent,
-    LoginComponent
+    LoginComponent,
+    PasswordAuthComponent
 ];
