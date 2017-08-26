@@ -16,7 +16,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { routes }   from './app.route';
 import { AppComponent, CategoriesComponent, TagsComponent,
   QuestionsComponent, QuestionAddUpdateComponent, LoginComponent,
-  PasswordAuthComponent } from './components';
+  PasswordAuthComponent, AdminComponent, AdminQuestionsComponent,
+  DashboardComponent, MyQuestionsComponent } from './components';
 import { CategoryService, TagService, QuestionService,
   AuthenticationService, AuthGuard } from './services';
 
@@ -44,7 +45,11 @@ export const firebaseConfig = {
     TagsComponent,
     QuestionsComponent,
     QuestionAddUpdateComponent,
-    PasswordAuthComponent
+    PasswordAuthComponent,
+    AdminComponent,
+    AdminQuestionsComponent,
+    DashboardComponent,
+    MyQuestionsComponent
   ],
   entryComponents: [
     LoginComponent, PasswordAuthComponent
@@ -72,6 +77,7 @@ export const firebaseConfig = {
     StoreModule.provideStore(reducer),
 
     //ngrx effects
+    EffectsModule.run(UserEffects),
     EffectsModule.run(CategoryEffects),
     EffectsModule.run(QuestionEffects),
     EffectsModule.run(TagEffects)

@@ -21,4 +21,13 @@ export class UserActions {
       payload: user
     };
   }
+
+  static ADD_USER_WITH_ROLES = 'ADD_USER_WITH_ROLES';
+  addUserWithRoles(user: User): Action {
+    return {
+      type: UserActions.ADD_USER_WITH_ROLES,
+      payload: user
+    };
+  }
+
 }
