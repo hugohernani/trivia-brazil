@@ -45,3 +45,5 @@ Thumbs.db
 
 # Others
 src/environments/environment.ts
+firebase.json
+.firebaserc

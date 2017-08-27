@@ -5,15 +5,14 @@ import { RouterModule  } from '@angular/router';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from  './shared/shared.module';
 import { AdminModule } from './admin/admin.module';
+import { QuestionsModule } from  './questions/questions.module';
 import { RoutingModule } from './routing/routing.module';
 
-import { AppComponent, DashboardComponent,
-         QuestionAddUpdateComponent, MyQuestionsComponent } from './components';
+import { AppComponent, DashboardComponent } from './components';
 
 @NgModule({
   declarations: [
-    AppComponent, DashboardComponent,
-    QuestionAddUpdateComponent, MyQuestionsComponent
+    AppComponent, DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +22,7 @@ import { AppComponent, DashboardComponent,
     CoreModule,
     SharedModule,
     AdminModule,
+    QuestionsModule,
     RoutingModule
   ],
   providers: [

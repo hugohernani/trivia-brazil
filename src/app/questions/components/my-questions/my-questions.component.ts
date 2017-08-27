@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 
 import { AppStore } from '../../../core/store/app-store';
+import { QuestionActions } from '../../../core/store/actions';
 import { Question, Category } from '../../../model';
 
 @Component({

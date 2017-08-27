@@ -17,7 +17,8 @@ import { LoginComponent, PasswordAuthComponent } from './components';
 
 import { SharedModule } from  '../shared/shared.module';
 
-import { firebaseConfig } from '../../environments/environment';
+import { CONFIG } from '../../environments/environment';
+export const firebaseConfig: FirebaseAppConfig = CONFIG.firebaseConfig;
 
 @NgModule({
   declarations: [

@@ -6,7 +6,7 @@
         <span md-line>Home</span>
         <span md-line class="secondary">Home</span>
       </a>
-      <a md-list-item (click)="sidenav.close()" [routerLink]="['/categories']">
+      <a md-list-item (click)="sidenav.close()" [routerLink]="['/my-questions']">
         <md-icon md-list-icon>list</md-icon>
         <span md-line>Categories</span>
         <span md-line class="secondary">Categories</span>
@@ -35,7 +35,7 @@
   </md-sidenav>
 
   <div class="my-content">
-    <md-toolbar [color]="primary">
+    <md-toolbar>
       <button md-icon-button (click)="sidenav.open()">
         <md-icon>menu</md-icon>
       </button>
