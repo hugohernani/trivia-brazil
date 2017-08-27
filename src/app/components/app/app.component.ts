@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppStore } from '../../core/store/app-store';
 import { CategoryActions, TagActions, QuestionActions } from '../../core/store/actions';
 import { MdSnackBar } from '@angular/material';
-import { AuthenticationService } from '../../services';
+import { AuthenticationService } from '../../core/services';
 import { User } from '../../model';
 
 @Component({

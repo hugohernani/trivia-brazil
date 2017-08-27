@@ -4,19 +4,16 @@ import { RouterModule  } from '@angular/router';
 
 import { CoreModule } from './core/core.module';
 import { SharedModule } from  './shared/shared.module';
+import { AdminModule } from './admin/admin.module';
 import { RoutingModule } from './routing/routing.module';
 
 import { AppComponent, DashboardComponent,
-         AdminComponent,
-         CategoriesComponent, TagsComponent,
-         QuestionAddUpdateComponent, MyQuestionsComponent, AdminQuestionsComponent } from './components';
+         QuestionAddUpdateComponent, MyQuestionsComponent } from './components';
 
 @NgModule({
   declarations: [
     AppComponent, DashboardComponent,
-    AdminComponent,
-    CategoriesComponent, TagsComponent,
-    QuestionAddUpdateComponent, MyQuestionsComponent, AdminQuestionsComponent
+    QuestionAddUpdateComponent, MyQuestionsComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +22,7 @@ import { AppComponent, DashboardComponent,
     //custom modules
     CoreModule,
     SharedModule,
+    AdminModule,
     RoutingModule
   ],
   providers: [
